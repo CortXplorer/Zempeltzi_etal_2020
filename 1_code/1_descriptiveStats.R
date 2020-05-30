@@ -28,7 +28,7 @@ p1 <- ggplot(temp_data, aes(x = RTbin, fill = answer)) +
       theme_bw()
    
 # save as pdf        
-file_name <-  paste0(mainDirPlots, "Figure1c_detect.pdf")
+file_name <-  paste0(mainDirPlots, "Figure1c_detection.pdf")
 pdf(file = file_name, width = 10, height = 8)  
 print(p1)
 dev.off()

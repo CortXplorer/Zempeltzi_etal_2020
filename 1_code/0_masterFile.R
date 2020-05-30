@@ -8,8 +8,14 @@
 #  3) run this file
 
 ## load necessary libraries ##
-library(ggplot2)
+if (!require("pacman")) install.packages("pacman")
+library(pacman)
+p_load(ggplot2)    # needed for plotting in all files
+p_load(DescTools)  # needed in 2_ANOVAs: EtaSq()
+p_load(tidyr)      # needed for some operations/data tyding/...
+p_load(ggpubr)     # needed for stat_compare_means in ggplots
 
+# load data file
 load("../0_data/Dataset.RData")
 
 ori_data <- gesamt_data  # safety copy of original dataset 
@@ -48,7 +54,7 @@ if(runDescriptives){
 }
 
 if(runANOVAs){
-#  source("2_ANOVAs.R")
+  source("2_ANOVAs.R")
 }
 
 if(runGLMMs){

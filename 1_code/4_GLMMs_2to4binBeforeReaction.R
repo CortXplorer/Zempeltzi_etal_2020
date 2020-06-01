@@ -342,7 +342,7 @@ out_answer  <- rbind(out_det01_hitmiss, out_discr01_hitmiss, out_discr01_facr,
  
  
 # also save into pipeline for R2m-Plots:
-file_name <- paste0(mainDirPipeline, "GLMM_answers_2bin.csv")
+file_name <- paste0(mainDirPipeline, "4,5_GLMM_answers_2bin.csv")
 write.table(x = out_answer, file_name,
    sep = ",", dec = ".", row.names = FALSE)
 
@@ -686,7 +686,7 @@ out_answer  <- rbind(out_det01_hitmiss, out_discr01_hitmiss, out_discr01_facr,
  
 
 # save into pipeline for R2m-Plots:
-file_name <- paste0(mainDirPipeline, "GLMM_answers_3bin.csv")
+file_name <- paste0(mainDirPipeline, "4,5_GLMM_answers_3bin.csv")
 write.table(x = out_answer, file_name,
    sep = ",", dec = ".", row.names = FALSE)
 
@@ -1038,7 +1038,7 @@ out_answer  <- rbind(out_det01_hitmiss, out_discr01_hitmiss, out_discr01_facr,
  
  
 # also save into pipeline for R2m-Plots:
-file_name <- paste0(mainDirPipeline, "GLMM_answers_4bin.csv")
+file_name <- paste0(mainDirPipeline, "4,5_GLMM_answers_4bin.csv")
 write.table(x = out_answer, file_name,
    sep = ",", dec = ".", row.names = FALSE)
 

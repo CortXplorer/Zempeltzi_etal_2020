@@ -25,9 +25,7 @@ load("../0_data/Dataset.RData")
 # the paper only looks at the first two phases
 gesamt_data <- gesamt_data[gesamt_data$phase %in% c("detect01", "discr01"),]
 
-## TODO:
-# include this in ReadingIn-File -> Dataset only includes phase 1 and 2
-
+# set the relevant directories for plots, statistics and pipeline
 mainDirPlots <- paste0("../3_output/figures/")
 mainDirCSV   <- paste0("../3_output/statistics/")
 mainDirPipeline <- paste0("../2_pipeline/")
@@ -41,14 +39,14 @@ runDescriptives <- TRUE
 runANOVAs <- TRUE
 
 # corresponds to Figure 4, 5 and 6
-runGLMMs <- FALSE
+runGLMMs <- TRUE
 
 # corresponds to Figure 7
 runTemporalGLMMs <- TRUE
 
-runAllGLMMs <- TRUE  # FALSE recommended if you want to save time
+runAllGLMMs <- FALSE  # FALSE recommended if you want to save time
 # for convenience the output csv files needed to plot the temporal resolution
-#   of the GLMMs is already provided in the folder 2_pipeline! 
+#   of the GLMMs are already provided in the folder 2_pipeline! 
 # you can also choose to rerun the GLMMs for all bins and variables.
 #   be however aware that this will take a good amount of time to run.
 

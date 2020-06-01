@@ -10,15 +10,17 @@
 ## load necessary libraries ##
 if (!require("pacman")) install.packages("pacman")
 library(pacman)
-p_load(ggplot2)    # needed for plotting in all files
-p_load(DescTools)  # needed in 2_ANOVAs: EtaSq()
-p_load(tidyr)      # needed for some operations/data tyding/...
-p_load(ggpubr)     # needed for stat_compare_means in ggplots
+p_load(ggplot2)     # needed for plotting in all files
+p_load(DescTools)   # needed in 2_ANOVAs: EtaSq()
+p_load(dplyr)       # needed for some operations/data tyding/...
+p_load(ggpubr)      # needed for stat_compare_means in ggplot
+p_load(tidyr)       # needed for gather()
+p_load(lme4, MuMIn) # needed for GLMMs: car, sjPlot, r.squaredGLMM
+p_load(grid)        # needed for plotting multiple ggplots in one
+p_load(viridis)     # needed for ggplot colour scaling
 
 # load data file
 load("../0_data/Dataset.RData")
-
-ori_data <- gesamt_data  # safety copy of original dataset 
 
 # the paper only looks at the first two phases
 gesamt_data <- gesamt_data[gesamt_data$phase %in% c("detect01", "discr01"),]
@@ -28,6 +30,7 @@ gesamt_data <- gesamt_data[gesamt_data$phase %in% c("detect01", "discr01"),]
 
 mainDirPlots <- paste0("../3_output/figures/")
 mainDirCSV   <- paste0("../3_output/statistics/")
+mainDirPipeline <- paste0("../2_pipeline/")
 
 ###=== CHOOSE which analyses you want to run ===###
 
@@ -38,11 +41,12 @@ runDescriptives <- TRUE
 runANOVAs <- TRUE
 
 # corresponds to Figure 4, 5 and 6
-runGLMMs <- TRUE
+runGLMMs <- FALSE
 
 # corresponds to Figure 7
 runTemporalGLMMs <- TRUE
-runAllGLMMs <- FALSE
+
+runAllGLMMs <- TRUE  # FALSE recommended if you want to save time
 # for convenience the output csv files needed to plot the temporal resolution
 #   of the GLMMs is already provided in the folder 2_pipeline! 
 # you can also choose to rerun the GLMMs for all bins and variables.
@@ -58,17 +62,15 @@ if(runANOVAs){
 }
 
 if(runGLMMs){
-#  source("3_GLMMs_1binBeforeReaction.R
+  source("3_GLMMs_1binBeforeReaction.R")
 }
 
 if(runTemporalGLMMs){
-# put this in pipeline:
-#  if(rerunAllGLMMs){
-#    source("4_GLMMs_2to4binBeforeReaction.R")  # this sd be in pipeline?
-#  }
-#  source("5_GLMMs_tempResolution.R")
+  if(runAllGLMMs){
+    source("4_GLMMs_2to4binBeforeReaction.R")
+  }
+  source("5_Time-resolvedR2mPlots.R")
 }
 
-# The output figures and stats tables will be in the correspondingly
-#   numbered subfolders in 3_output!
+# The output figures and stats tables will be in 3_output!
 

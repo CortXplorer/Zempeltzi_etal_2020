@@ -24,4 +24,5 @@ Since code file 4 takes a longer time to run, it is recommended to set runAllGLM
 
 With these guidelines, further, more detailled comments in the code and the modular setup of the analysis, we want to allow the user to rerun and understand our statistical analysis.
 
+***
 Please raise an issue in this repository if something is not running. Thank you!
